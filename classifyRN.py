@@ -29,7 +29,7 @@ def classify (
 
     # Preprocess image
     image = image.convert("RGB")
-    image = resize(image, 224)
+    image = resize(image, 232)
     image = center_crop(image, 224)
     image_tensor = to_tensor(image)
     normalized_tensor = normalize(
