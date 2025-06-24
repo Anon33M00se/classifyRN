@@ -1,0 +1,15 @@
+#+TITLE: Classification with ResNet
+#+AUTHOR: thor
+#+CREATED: 2025-06-24
+
+
+Just a simple bit of code that classifies an ime using torchvision's
+pre-trained weights for the ResNet model.
+
+There's no fxn decortation here, just python. But images are
+preprocessed explicitly to the correct size/format/weight without
+calling the model's transforms() method.
+
+
+
+
