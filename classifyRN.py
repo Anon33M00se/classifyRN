@@ -1,15 +1,20 @@
 #
-#  Use torchvision pre trained model ResNet (with default pretrained weights)
+# Use torchvision pre trained model ResNet
+# (with default pretrained weights)
 #
 
 from PIL import Image
 from torchvision.io import decode_image
 from torchvision.models import resnet50, ResNet50_Weights
-from torchvision.transforms.functional import normalize, resize, to_tensor, center_crop
+from torchvision.transforms.functional import (
+                                                normalize,
+                                                resize,
+                                                to_tensor,
+                                                center_crop
+                                              )
 
-def classify (
-    image: Image.Image,
-) -> str:
+
+def classify(image: Image.Image) -> str:
     """
     Classify an image using ResNet
 
@@ -41,15 +46,14 @@ def classify (
     # Generate predicted category
     prediction = model(normalized_tensor.unsqueeze(0)).squeeze(0).softmax(0)
     class_id = prediction.argmax().item()
-    score = prediction[class_id].item()
+    # score = prediction[class_id].item()
     category_name = weights.meta["categories"][class_id]
-    return(category_name)
+    return (category_name)
 
 
 if __name__ == "__main__":
-  #image = Image.open("test/assets/grace_hopper_517x606.jpg")
-  image = Image.open("test/assets/moose.jpg")
-  #image = Image.open("test/assets/ham_sandwich.jpg")
-  print(f"   Input image: {image.filename}")
-  print(f"Classification: {classify(image)}")
-  
+    # image = Image.open("test/assets/grace_hopper_517x606.jpg")
+    image = Image.open("test/assets/moose.jpg")
+    # image = Image.open("test/assets/ham_sandwich.jpg")
+    print(f"   Input image: {image.filename}")
+    print(f"Classification: {classify(image)}")
